@@ -1,2 +1,2 @@
-# PyTorch-study
-가짜연구소 2기 파이토치 기초 스터디
+# pytorch-guide
+가짜연구소 3기 pytorch guide crew
