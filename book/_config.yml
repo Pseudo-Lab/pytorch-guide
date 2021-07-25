@@ -11,9 +11,6 @@ execute:
 
 # HTML-specific settings
 html:
-  favicon: 'PseudoLab_logo.png'
-  use_issues_button: true
-  use_repository_button: true
   home_page_in_navbar         : false
 
 # Interact link settings
@@ -24,16 +21,13 @@ repository:
   url                         : https://github.com/Pseudo-Lab/pytorch-guide
   path_to_book                : "book"
 
-binder:
-  binderhub_url               : "https://mybinder.org"
-  text                        : "Launch binder"
-
 # LaTeX settings
-bibtex_bibfiles:
-   - _bibliography/references.bib
 latex:
   latex_engine                : "xelatex"
   latex_documents:
     targetname: book.tex
 
-exclude_patterns: [temp/*]
+html:
+  favicon: 'PseudoLab_logo.png'
+  use_issues_button: true
+  use_repository_button: true
