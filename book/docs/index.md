@@ -2,7 +2,9 @@
 
 ---
 
-## 📔 **PyTorch 가이드**
+## **PyTorch 가이드**
+
+---
 
 **PyTorch 가이드** 는 
 
@@ -12,7 +14,7 @@
 
 </br>
 
-## 🦁 **크루 소개**
+## **크루 소개**
 
 ---
 
@@ -38,5 +40,7 @@
 
 여기에서는 어떠한 대가도 바라지 않습니다. 여러분의 정보를 공유해주시고, 활발한 반응을 해주시면 운영진에게 큰 힘이 됩니다. 성장과 기회가 필요하신 분들께 자신의 열정과 능력을 펼칠 수 있도록 돕는 가짜연구소를 응원해주세요!
 
-- [홈페이지](https://pseudo-lab.com/), [Github](https://github.com/Pseudo-Lab), [Facebook](https://www.facebook.com/groups/pseudolab/), [Linkedin](https://www.linkedin.com/company/pseudolab/?originalSubdomain=kr)
+| ![logo](https://github.com/Pseudo-Lab/pytorch-guide/blob/main/book/PseudoLab_logo.png?raw=true) | - [홈페이지](https://pseudo-lab.com/)</br> - [Github](https://github.com/Pseudo-Lab) </br> -  [Facebook](https://www.facebook.com/groups/pseudolab/) </br> -  [Linkedin](https://www.linkedin.com/company/pseudolab/?originalSubdomain=kr) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+
 - 문의: [pseudolab.operator@gmail.com](mailto:pseudolab.operator@gmail.com)
