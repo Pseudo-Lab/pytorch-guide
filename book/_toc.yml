@@ -1,5 +1,6 @@
-format: jb-article
+format: jb-book
 root: docs/index
-sections:
-- file: docs/분류 (Classification)
-- file: docs/CNN (Convolutional Neural Network)
+chapters:
+- file: docs/ch1/분류 (Classification)
+  sections:
+  - file: docs/ch1/CNN (Convolutional Neural Network)
