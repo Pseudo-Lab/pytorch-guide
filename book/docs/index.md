@@ -22,9 +22,9 @@
 
 **PyTorch 가이드** 크루의 목표는 Pytorch을 활용하여 인공지능의 기초적인 지식부터 가벼운 활용까지 다룰 수 있는 가짜연구소만의 탄탄한 자료를 구축하는 것입니다. 널리 활용되는 자료를 만들어 AI 생태계에 기여하고자 합니다. 
 
-| Index | 주제                  | 크루원                                                       | 제작 일자                          |
-| ----- | --------------------- | :----------------------------------------------------------- | ---------------------------------- |
-| 01    | 분류 (Classification) | [권지현](https://github.com/Jihyun22) [유승민](https://github.com/WeissYu) 이병관 [이유진](https://github.com/eugene9212) | 2021.07.19 ~ 2021.09 (*배포 예정*) |
+| Index |         주제          |                            크루원                            |             제작 일자              |
+| :---: | :-------------------: | :----------------------------------------------------------: | :--------------------------------: |
+|  01   | 분류 (Classification) | [권지현](https://github.com/Jihyun22) [유승민](https://github.com/WeissYu) 이병관 [이유진](https://github.com/eugene9212) | 2021.07.19 ~ 2021.09 (*배포 예정*) |
 
 </br>
 
@@ -40,7 +40,9 @@
 
 여기에서는 어떠한 대가도 바라지 않습니다. 여러분의 정보를 공유해주시고, 활발한 반응을 해주시면 운영진에게 큰 힘이 됩니다. 성장과 기회가 필요하신 분들께 자신의 열정과 능력을 펼칠 수 있도록 돕는 가짜연구소를 응원해주세요!
 
-| ![logo](https://github.com/Pseudo-Lab/pytorch-guide/blob/main/book/PseudoLab_logo.png?raw=true) | - [홈페이지](https://pseudo-lab.com/)</br> - [Github](https://github.com/Pseudo-Lab) </br> -  [Facebook](https://www.facebook.com/groups/pseudolab/) </br> -  [Linkedin](https://www.linkedin.com/company/pseudolab/?originalSubdomain=kr) |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-
+- 홈페이지: [pseudo-lab.com](https://pseudo-lab.com/) 
+- Github:  [github.com/Pseudo-Lab](http://www.github.com/Pseudo-Lab) 
+- Facebook: [facebook.com/groups/pseudolab](https://www.facebook.com/groups/pseudolab/) 
+- Linkedin: [linkedin.com/company/pseudolab](https://www.linkedin.com/company/pseudolab/?originalSubdomain=kr)) 
 - 문의: [pseudolab.operator@gmail.com](mailto:pseudolab.operator@gmail.com)
+
