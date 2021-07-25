@@ -1,8 +1,6 @@
 # pytorch-guide
 
-```{note}
-"PyTorch 가이드"크루의 목표는 Pytorch을 활용하여 인공지능의 기초적인 지식부터 가벼운 활용까지 다룰 수 있는 가짜연구소만의 탄탄한 자료를 구축하는 것입니다. 널리 활용되는 자료를 만들어 AI 생태계에 기여하고자 합니다.
-```
+> "PyTorch 가이드"크루의 목표는 Pytorch을 활용하여 인공지능의 기초적인 지식부터 가벼운 활용까지 다룰 수 있는 가짜연구소만의 탄탄한 자료를 구축하는 것입니다. 널리 활용되는 자료를 만들어 AI 생태계에 기여하고자 합니다.
 
 - 노션 페이지 : [바로가기](https://www.notion.so/chanrankim/PyTorch-f56ab03f6ac1488bb108514d3eed9ab8)
 - 빌드 페이지 : https://pseudo-lab.github.io/pytorch-guide/
