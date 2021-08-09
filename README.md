@@ -66,7 +66,7 @@
 
   - ```python
     pip install ghp-import
-    ghp-import -n -p -f book/_build/html -m "initial publishing"
+    ghp-import -n -p -f book/_build/html -m "20-08-09 publishing"
     ```
 
   - https://pseudo-lab.github.io/pytorch-guide/ 링크 접속
