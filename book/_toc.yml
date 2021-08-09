@@ -1,7 +1,6 @@
 format: jb-book
 root: docs/index
 chapters:
-- file: docs/ch1/분류 (Classification)
-  sections:
-  - file: docs/ch1/CNN (Convolutional Neural Network)
+- file: docs/ch1/01 Tensor
+- file: docs/ch1/02 Data
 # - fime: docs/ch1/(작성한 파일 이름 작성) 
