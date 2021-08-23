@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>01 Tensor &#8212; PseudoLab PyTorch guide</title>
+    <title>2. Tensor Operation &#8212; PseudoLab PyTorch guide</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -53,8 +53,8 @@
     <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1. Tensor Allocation" href="Tensor%20Allocation.html" />
-    <link rel="prev" title="[가짜연구소 3기] PyTorch 가이드" href="../index.html" />
+    <link rel="next" title="02 Data" href="../ch2/02%20Data.html" />
+    <link rel="prev" title="1. Tensor Allocation" href="Tensor%20Allocation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -92,34 +92,22 @@
  </li>
 </ul>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
-   01 Tensor
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tensor%20Allocation.html">
+   1. Tensor Allocation
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Tensor%20Allocation.html">
-     1. Tensor Allocation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Tensor%20Operation.html">
-     2. Tensor Operation
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   2. Tensor Operation
+  </a>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../ch2/02%20Data.html">
    02 Data
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -145,8 +133,8 @@
   <a class="reference internal" href="../ch3/03%20Model.html">
    03 Model
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -204,7 +192,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/docs/ch1/01 Tensor.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/docs/ch1/Tensor Operation.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -224,7 +212,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/Pseudo-Lab/pytorch-guide/issues/new?title=Issue%20on%20page%20%2Fdocs/ch1/01 Tensor.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/Pseudo-Lab/pytorch-guide/issues/new?title=Issue%20on%20page%20%2Fdocs/ch1/Tensor Operation.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -245,7 +233,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/Pseudo-Lab/pytorch-guide/master?urlpath=tree/book/docs/ch1/01 Tensor.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Pseudo-Lab/pytorch-guide/master?urlpath=tree/book/docs/ch1/Tensor Operation.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -262,6 +250,100 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tensor-approach">
+   2.1 Tensor approach
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing-slicing">
+     2.1.1 Indexing, Slicing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transposing">
+     2.1.2 Transposing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#broadcasting">
+     2.1.3 Broadcasting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-place">
+     2.1.4 In-place
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arithmetic-operation">
+   2.2 Arithmetic Operation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matrix-multiplication">
+     2.2.1 Matrix Multiplication
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mean">
+     2.2.2 Mean
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sum">
+     2.2.3 Sum
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#max">
+     2.2.4 Max
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tensor-manipulation">
+   2.3 Tensor Manipulation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#view">
+     2.3.1 View
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#squeeze">
+     2.3.2 Squeeze
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#type-casting">
+     2.3.3 Type Casting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#concatenate">
+     2.3.4 Concatenate
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stacking">
+     2.3.4 Stacking
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -270,10 +352,57 @@
         
               <div>
                 
-  <div class="section" id="tensor">
-<h1>01 Tensor<a class="headerlink" href="#tensor" title="Permalink to this headline">¶</a></h1>
-<p>PyTorch 의 기본적인 자료구조 Tensor에 대해 살펴보고, 조작하는 방법을 안내합니다.</p>
-<div class="toctree-wrapper compound">
+  <div class="section" id="tensor-operation">
+<h1>2. Tensor Operation<a class="headerlink" href="#tensor-operation" title="Permalink to this headline">¶</a></h1>
+<p>텐서 조작과 연산에 대해 살펴보겠습니다.</p>
+<hr class="docutils" />
+<div class="section" id="tensor-approach">
+<h2>2.1 Tensor approach<a class="headerlink" href="#tensor-approach" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="indexing-slicing">
+<h3>2.1.1 Indexing, Slicing<a class="headerlink" href="#indexing-slicing" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="transposing">
+<h3>2.1.2 Transposing<a class="headerlink" href="#transposing" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="broadcasting">
+<h3>2.1.3 Broadcasting<a class="headerlink" href="#broadcasting" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="in-place">
+<h3>2.1.4 In-place<a class="headerlink" href="#in-place" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="arithmetic-operation">
+<h2>2.2 Arithmetic Operation<a class="headerlink" href="#arithmetic-operation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="matrix-multiplication">
+<h3>2.2.1 Matrix Multiplication<a class="headerlink" href="#matrix-multiplication" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="mean">
+<h3>2.2.2 Mean<a class="headerlink" href="#mean" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="sum">
+<h3>2.2.3 Sum<a class="headerlink" href="#sum" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="max">
+<h3>2.2.4 Max<a class="headerlink" href="#max" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="tensor-manipulation">
+<h2>2.3 Tensor Manipulation<a class="headerlink" href="#tensor-manipulation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="view">
+<h3>2.3.1 View<a class="headerlink" href="#view" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="squeeze">
+<h3>2.3.2 Squeeze<a class="headerlink" href="#squeeze" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="type-casting">
+<h3>2.3.3 Type Casting<a class="headerlink" href="#type-casting" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="concatenate">
+<h3>2.3.4 Concatenate<a class="headerlink" href="#concatenate" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="stacking">
+<h3>2.3.4 Stacking<a class="headerlink" href="#stacking" title="Permalink to this headline">¶</a></h3>
+</div>
 </div>
 </div>
 
@@ -302,8 +431,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="../index.html" title="previous page">[가짜연구소 3기] PyTorch 가이드</a>
-    <a class='right-next' id="next-link" href="Tensor%20Allocation.html" title="next page">1. Tensor Allocation</a>
+    <a class='left-prev' id="prev-link" href="Tensor%20Allocation.html" title="previous page">1. Tensor Allocation</a>
+    <a class='right-next' id="next-link" href="../ch2/02%20Data.html" title="next page">02 Data</a>
 
         </div>
         
