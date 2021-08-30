@@ -8,9 +8,9 @@
 
 **PyTorch 가이드** 는 
 
-1. Deep-learning 에 대해 **fundamental 한 접근법**을 바탕으로,
-2. **PyTorch  코드 작성**에 대해 설명하며,
-3. **쉬운 언어**로 작성된 기초의 자료를 지향합니다.
+1. Deep-learning 에 대해 fundamental 한 접근법을 바탕으로,
+2. PyTorch  코드 작성에 대해 설명하며,
+3. 쉬운 언어로 작성된 기초의 자료를 지향합니다.
 
 </br>
 
@@ -22,11 +22,12 @@
 
 **PyTorch 가이드** 크루의 목표는 Pytorch을 활용하여 인공지능의 기초적인 지식부터 가벼운 활용까지 다룰 수 있는 가짜연구소만의 탄탄한 자료를 구축하는 것입니다. 널리 활용되는 자료를 만들어 AI 생태계에 기여하고자 합니다. 
 
-| Index | 주제  |                            크루원                            |             제작 일자              |
-| :---: | :---: | :----------------------------------------------------------: | :--------------------------------: |
-|  01   | Tesor | [권지현](https://github.com/Jihyun22) [유승민](https://github.com/WeissYu) [이유진](https://github.com/eugene9212) | 2021.07.19 ~ 2021.09 (*배포 예정*) |
-|  02   | Data  | [권지현](https://github.com/Jihyun22) [유승민](https://github.com/WeissYu) [이유진](https://github.com/eugene9212) | 2021.07.19 ~ 2021.09 (*배포 예정*) |
-|       |       |                                                              |                                    |
+| Index | Part   |            Topic             |                            크루원                            |     제작 일자      |
+| :---: | ------ | :--------------------------: | :----------------------------------------------------------: | :----------------: |
+|  01   | 기초부 |      Tesor, Data, Model      |            [권지현](https://github.com/Jihyun22)             | 2021.07.19 ~ 09.20 |
+|  02   | 이론부 | ResNet, ResNext, Wide-ResNet |           [유승민](https://github.com/Seungmin-U)            | 2021.07.19 ~ 09.20 |
+|  03   | 적용부 |       ResNet, ResNext        |           [이유진](https://github.com/eugene9212)            | 2021.07.19 ~ 09.20 |
+|  04   | 활용부 |         Fine-tuning          | [권지현](https://github.com/Jihyun22) [이유진](https://github.com/eugene9212) | 2021.07.19 ~ 09.20 |
 
 </br>
 
