@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>적용부 &#8212; PseudoLab PyTorch guide</title>
+    <title>기초부 &#8212; PseudoLab PyTorch guide</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -53,8 +53,8 @@
     <link rel="shortcut icon" href="../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="활용부" href="%ED%99%9C%EC%9A%A9%EB%B6%80.html" />
-    <link rel="prev" title="이론부" href="%EC%9D%B4%EB%A1%A0%EB%B6%80.html" />
+    <link rel="next" title="01 Tensor" href="ch1/01%20Tensor.html" />
+    <link rel="prev" title="[가짜연구소 3기] PyTorch 가이드" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -92,23 +92,23 @@
  </li>
 </ul>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="%EA%B8%B0%EC%B4%88%EB%B6%80.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    기초부
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="%EC%9D%B4%EB%A1%A0%EB%B6%80.html">
+  <a class="reference internal" href="02.html">
    이론부
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="03.html">
    적용부
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="%ED%99%9C%EC%9A%A9%EB%B6%80.html">
+  <a class="reference internal" href="04.html">
    활용부
   </a>
  </li>
@@ -153,7 +153,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/적용부.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/docs/01.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -173,7 +173,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/Pseudo-Lab/pytorch-guide/issues/new?title=Issue%20on%20page%20%2Fdocs/적용부.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/Pseudo-Lab/pytorch-guide/issues/new?title=Issue%20on%20page%20%2Fdocs/01.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -194,7 +194,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/Pseudo-Lab/pytorch-guide/master?urlpath=tree/book/docs/적용부.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Pseudo-Lab/pytorch-guide/master?urlpath=tree/book/docs/01.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -218,7 +218,7 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   적용부
+   기초부
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
@@ -243,7 +243,7 @@
               <div>
                 
   <div class="section" id="id1">
-<h1>적용부<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>기초부<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>본 자료는 가짜연구소 3기 PyTorch 가이드 활동으로 작성되었습니다.</p></li>
 </ul>
@@ -252,8 +252,7 @@
 <div class="section" id="page-list">
 <h1>Page List<a class="headerlink" href="#page-list" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><p><em>이하 내용은 예시 입니다.</em></p></li>
-<li><p>적용부 에서는 PyTorch 로 구현된 네트워크 코드에 대한 설명과 PyTorch 기초부에서 다루었던 내용이 어떻게 사용되는지에 대해 설명합니다.</p></li>
+<li><p>기초부 에서는 PyTorch 에 대해 <code class="docutils literal notranslate"><span class="pre">Tensor</span></code>, <code class="docutils literal notranslate"><span class="pre">Data</span></code>, <code class="docutils literal notranslate"><span class="pre">Model</span></code> 3가지 Topic 에 대해 정리하며, 이후 챕터인 <em>네트워크 코드부</em>, <em>활용부</em>에서 다룰 기초적인 내용을 수록하고 있습니다.</p></li>
 <li><p>Page 는 다음과 같이 구성됩니다.</p></li>
 </ul>
 <table class="colwidths-auto table">
@@ -267,18 +266,53 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>03-1</p></td>
-<td><p>적용부</p></td>
-<td><p>CNN</p></td>
-<td><p>ResNet</p></td>
-<td><p><a class="reference external" href="https://github.com/eugene9212">이유진</a></p></td>
+<tr class="row-even"><td><p>01-1-1</p></td>
+<td><p>기초부</p></td>
+<td><p>Tensor</p></td>
+<td><p>Tensor Allocation</p></td>
+<td><p><a class="reference external" href="https://github.com/Jihyun22">권지현</a></p></td>
 <td><p>2021.09</p></td>
 </tr>
-<tr class="row-odd"><td><p>03-2</p></td>
-<td><p>적용부</p></td>
-<td><p>CNN</p></td>
-<td><p>ResNext</p></td>
-<td><p><a class="reference external" href="https://github.com/eugene9212">이유진</a></p></td>
+<tr class="row-odd"><td><p>01-1-2</p></td>
+<td><p>기초부</p></td>
+<td><p>Tensor</p></td>
+<td><p>Tensor Operation</p></td>
+<td><p><a class="reference external" href="https://github.com/Jihyun22">권지현</a></p></td>
+<td><p>2021.09</p></td>
+</tr>
+<tr class="row-even"><td><p>01-2-1</p></td>
+<td><p>기초부</p></td>
+<td><p>Data</p></td>
+<td><p>Data Set</p></td>
+<td><p><a class="reference external" href="https://github.com/Jihyun22">권지현</a></p></td>
+<td><p>2021.09</p></td>
+</tr>
+<tr class="row-odd"><td><p>01-2-2</p></td>
+<td><p>기초부</p></td>
+<td><p>Data</p></td>
+<td><p>Data Load</p></td>
+<td><p><a class="reference external" href="https://github.com/Jihyun22">권지현</a></p></td>
+<td><p>2021.09</p></td>
+</tr>
+<tr class="row-even"><td><p>01-2-3</p></td>
+<td><p>기초부</p></td>
+<td><p>Data</p></td>
+<td><p>Data Argument</p></td>
+<td><p><a class="reference external" href="https://github.com/Jihyun22">권지현</a></p></td>
+<td><p>2021.09</p></td>
+</tr>
+<tr class="row-odd"><td><p>01-3-1</p></td>
+<td><p>기초부</p></td>
+<td><p>Model</p></td>
+<td><p>Model Layer</p></td>
+<td><p><a class="reference external" href="https://github.com/Jihyun22">권지현</a></p></td>
+<td><p>2021.09</p></td>
+</tr>
+<tr class="row-even"><td><p>01-3-2</p></td>
+<td><p>기초부</p></td>
+<td><p>Model</p></td>
+<td><p>Model Parameters</p></td>
+<td><p><a class="reference external" href="https://github.com/Jihyun22">권지현</a></p></td>
 <td><p>2021.09</p></td>
 </tr>
 </tbody>
@@ -291,6 +325,8 @@
 <li><p>추가 예정.</p></li>
 </ul>
 <hr class="docutils" />
+<div class="toctree-wrapper compound">
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -318,8 +354,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="%EC%9D%B4%EB%A1%A0%EB%B6%80.html" title="previous page">이론부</a>
-    <a class='right-next' id="next-link" href="%ED%99%9C%EC%9A%A9%EB%B6%80.html" title="next page">활용부</a>
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">[가짜연구소 3기] PyTorch 가이드</a>
+    <a class='right-next' id="next-link" href="ch1/01%20Tensor.html" title="next page">01 Tensor</a>
 
         </div>
         
