@@ -71,3 +71,8 @@
 
   - https://pseudo-lab.github.io/pytorch-guide/ 링크 접속
 
+---
+
+## Issue
+
+- 파일 이름이 한글인 경우 toc 정상 작동 안함
