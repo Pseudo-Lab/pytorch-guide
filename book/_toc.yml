@@ -1,18 +1,23 @@
 format: jb-book
 root: docs/index
 chapters:
-- file: docs/ch1/01 Tensor
+- file: docs/01
   sections:
-  - file: docs/ch1/Tensor Allocation
-  - file: docs/ch1/Tensor Operation
-- file: docs/ch2/02 Data
-  sections:
-  - file: docs/ch2/Data set
-  - file: docs/ch2/Data load
-  - file: docs/ch2/Data Argument
-- file: docs/ch3/03 Model
-  sections:
-  - file: docs/ch3/Model Layer
-  - file: docs/ch3/Model Parameters
+  - file: docs/ch1/01 Tensor
+    sections:
+    - file: docs/ch1/Tensor Allocation
+    - file: docs/ch1/Tensor Operation
+  - file: docs/ch2/02 Data
+    sections:
+    - file: docs/ch2/Data set
+    - file: docs/ch2/Data load
+    - file: docs/ch2/Data Argument
+  - file: docs/ch3/03 Model
+    sections:
+    - file: docs/ch3/Model Layer
+    - file: docs/ch3/Model Parameters
+- file: docs/02
+- file: docs/03
+- file: docs/04
 
-# - fime: docs/ch1/(작성한 파일 이름 작성) 
+# - file: docs/ch1/(작성한 파일 이름 작성) 
