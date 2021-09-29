@@ -27,14 +27,17 @@ parts:
   chapters:
   - file: docs/02
     title: Intro
+  - file: docs/02-1
 - caption: 03 적용부
   chapters:
   - file: docs/03
     title: Intro
+  - file: docs/03-1
 - caption: 04 활용부
   chapters:
   - file: docs/04
     title: Intro
+  - file: docs/04-1
 
 
 # - file: docs/ch1/(작성한 파일 이름 작성) 
