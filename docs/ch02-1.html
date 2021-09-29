@@ -1,0 +1,674 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ResNet 시작하기 &#8212; PseudoLab PyTorch guide</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="적용부" href="ch03.html" />
+    <link rel="prev" title="이론부" href="ch02.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/PseudoLab_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">PseudoLab PyTorch guide</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   [가짜연구소 3기] PyTorch 가이드
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch01.html">
+   기초부
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch01-1.html">
+     Tensor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch01-2.html">
+     Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch01-3.html">
+     Model
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="ch02.html">
+   이론부
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     ResNet 시작하기
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch03.html">
+   적용부
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch03-1.html">
+     PyTorch 로 ResNet 구현하기
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch04.html">
+   활용부
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch04-1.html">
+     PyTorch 로 Transfer-Learning 하기
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/ch02-1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Pseudo-Lab/pytorch-guide"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/Pseudo-Lab/pytorch-guide/issues/new?title=Issue%20on%20page%20%2Fdocs/ch02-1.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Pseudo-Lab/pytorch-guide/master?urlpath=tree/book/docs/ch02-1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background-of-deep-residual-network">
+   Background of Deep Residual Network
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-statement">
+     Problem Statement
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#degradation-problem">
+     Degradation problem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#residual-block">
+     Residual Block이란?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#identity-mapping-by-shortcut-skip-connection">
+     Identity mapping by Shortcut (Skip Connection)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pre-activation">
+     Pre-activation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wide-residual-networks">
+   Wide Residual Networks
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Problem Statement
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#architecture-of-wide-resnet">
+     Architecture of Wide ResNet
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#experiments">
+     Experiments
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resnext">
+   ResNeXt
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Problem Statement
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#architecture-of-resnext">
+     Architecture of ResNeXt
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aggregated-transformations">
+     Aggregated Transformations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Experiments
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="resnet">
+<h1>ResNet 시작하기<a class="headerlink" href="#resnet" title="Permalink to this headline">¶</a></h1>
+<p>Pytorch 를 본격적으로 사용하기에 앞서, 기본적인 네트워크 구조를 살펴보고자 합니다. 다양한 머신러닝 분야 중 Computer Vision 의 대표적인 모델 ResNet 을 다루고, 이론적인 내용을 어떻게 Pytorch 로 구현하고 활용할 수 있는지 설명하겠습니다.</p>
+<ul class="simple">
+<li><p>담당자: 유승민 님</p></li>
+<li><p>최종수정일: 21-09-29</p></li>
+<li><p>본 자료는 가짜연구소 3기 Pytorch guide 크루 활동으로 작성됨</p></li>
+</ul>
+<div class="section" id="background-of-deep-residual-network">
+<h2>Background of Deep Residual Network<a class="headerlink" href="#background-of-deep-residual-network" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="problem-statement">
+<h3>Problem Statement<a class="headerlink" href="#problem-statement" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>When deeper networks start to converge, a degradation problem has been exposed <br>
+<br>
+How do we get deeper network without degradation of accuracy? <br></p>
+</div></blockquote>
+<p>VGGNet에서는 네트워크의 깊이를 깊게 만드는 데 집중하였습니다.<br><br>
+네트워크의 깊이가 깊어짐에 따라 앞선 AlexNet보다 모델의 성능이 좋아졌지만 문제들이 생기게 됩니다.<br><br>
+고질적인 문제인 <code class="docutils literal notranslate"><span class="pre">vanishing/exploding</span> <span class="pre">gradient</span> <span class="pre">problem</span></code>은 normalized initialization과 BatchNormalization에 의해 조금 완화되었지만 <br><br>
+그 밖에도 네트워크가 깊어질 수록 오히려 모델의 accuracy가 향상되지 않는 문제가 생깁니다. <br><br>
+ResNet 논문의 저자는 이를 <code class="docutils literal notranslate"><span class="pre">degradation</span> <span class="pre">problem</span></code>이라고 부릅니다.<br><br>
+그렇다면 네트워크의 깊이를 깊게 만들면서 accuracy를 향상시키는 방법은 없을까 생각해보려 합니다.</p>
+</div>
+<div class="section" id="degradation-problem">
+<h3>Degradation problem<a class="headerlink" href="#degradation-problem" title="Permalink to this headline">¶</a></h3>
+<img style="float: left;" src="degradation1.png" width="40%"><p>위 그림은 layer의 갯수만 다르게 학습 시킨 네트워크를 비교하고 있습니다. <br><br>
+위 그림에서 나타나듯이 56-layer 네트워크가 20-layer 네트워크 보다 좋지 못한 성능을 보여주고 있습니다. <br><br>
+이는 overfitting에 의한 문제가 아닌 네트워크의 깊이가 깊어짐에 있어서 성능 저하가 생김을 보여줍니다. <br></p>
+<img style="float: left;" src="degradation2.png" width="35%"><p>직관적인 이해를 돕기 위한 설명으로, 만약 네트워크의 깊이가 깊어지게 된다면<br><br>
+shallow layer에서 deep layer까지 정보를 전달하는 과정에서 정보 손실이 많이 일어납니다.<br><br>
+따라서, front propagation 과정에서 학습이 잘 되지 않는 문제가 생깁니다.</p>
+<img style="float: left;" src="degradation3.png" width="35%"><p>Front propagation 과정에서의 문제점을 해결하려면 단순히 shallow layer와 deep layer를 잇는 shortcut을 만들면 됩니다. <br><br>
+Shortcut을 통하여, 정보를 직접 전달하면 정보 손실이 일어나지 않기에 front propagation 과정이 효율적으로 이루어집니다. <br><br>
+하지만 지금 제시한 해결책은 앞으로 서술할 Residual Block의 개념의 직관적인 이해를 돕기 위한 예시일 뿐임을 명심해야합니다. <br><br>
+물론, 위의 방법과 유사한 개념으로 Residual Block이 만들어진 것은 맞지만, <br><br>
+실제 우리가 Deep Learning을 통해 풀고자하는 문제는 이처럼 간단하지 않습니다.</p>
+</div>
+<div class="section" id="residual-block">
+<h3>Residual Block이란?<a class="headerlink" href="#residual-block" title="Permalink to this headline">¶</a></h3>
+<img style="float: left;" src="residual_block1.png" width="30%"><p>Residual Network은 input value <span class="math notranslate nohighlight">\(x\)</span>가 output value <span class="math notranslate nohighlight">\(F(x) +x\)</span> 로 나타납니다.<br><br>
+이때, <span class="math notranslate nohighlight">\(F(x)\)</span> 는 기존 plain block의 형태가 동일하고 <span class="math notranslate nohighlight">\(x\)</span> 는 identity mapping입니다.<br><br>
+<span class="math notranslate nohighlight">\(H(x) = F(x) + x\)</span> 이라 한다면, <span class="math notranslate nohighlight">\(F(x) = H(x) - x\)</span> 로 변형할 수 있는데, 이는 output value에서 input value를 뺀 값으므로 <br><br>
+<span class="math notranslate nohighlight">\(F(x)\)</span> 는 residue(잔차)라고 볼 수 있습니다.<br><br>
+우리의 목표는 <span class="math notranslate nohighlight">\(H(x)\)</span>, 즉 residual block에서의 output value가 ground truth와 동일해집니다.<br><br>
+사실 <span class="math notranslate nohighlight">\(x\)</span> 는 input value와 동일하므로 <span class="math notranslate nohighlight">\(H(x)\)</span> 는 원하는 <span class="math notranslate nohighlight">\(F(x)\)</span> 을 도출할 수 있다면, 우리가 원하는 목표에 도달할 수 있습니다.<br><br></p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(H(x)\)</span> 를 구하는 것과 <span class="math notranslate nohighlight">\(F(x)\)</span> 를 구하는 것, 무슨 큰 차이가 있을까?<br></p>
+</div></blockquote>
+<p>이해를 돕기 위해 한 가지 예시를 들어보겠습니다. <br><br>
+우리의 목표를 <span class="math notranslate nohighlight">\(H(x)\)</span> 가 <span class="math notranslate nohighlight">\(x\)</span> 와 동일해지길 원한다고 가정합니다. (즉, <span class="math notranslate nohighlight">\(H(x) = x\)</span>이 되도록 원합니다.) <br><br>
+이 경우, <span class="math notranslate nohighlight">\(F(x)\)</span> 는 <span class="math notranslate nohighlight">\(0\)</span> 와 동일해지면 이 문제는 해결됩니다.<br><br>
+원래 문제 <span class="math notranslate nohighlight">\(H(x)\)</span> 는 <span class="math notranslate nohighlight">\(x\)</span> <span class="math notranslate nohighlight">\(\rightarrow weight\)</span> <span class="math notranslate nohighlight">\(...\)</span> <span class="math notranslate nohighlight">\(\rightarrow weight\)</span> <span class="math notranslate nohighlight">\(\rightarrow ReLu\)</span> <span class="math notranslate nohighlight">\(\rightarrow x\)</span> 이지만, <br><br>
+변형된 문제 <span class="math notranslate nohighlight">\(F(x)\)</span> 는 <span class="math notranslate nohighlight">\(x\)</span> <span class="math notranslate nohighlight">\(\rightarrow weight\)</span> <span class="math notranslate nohighlight">\(...\)</span> <span class="math notranslate nohighlight">\(\rightarrow weight\)</span> <span class="math notranslate nohighlight">\(\rightarrow ReLu\)</span> <span class="math notranslate nohighlight">\(\rightarrow 0\)</span> 으로 <br><br>
+간단히 하나의 weight layer에 input value가 0으로 수렴하도록 만들어주면 쉽게 해결됩니다. <br><br>
+실제 우리가 풀려는 문제는 항상 <span class="math notranslate nohighlight">\(H(x) = x\)</span> 가 optimum은 아닙니다. <br><br>
+하지만, <span class="math notranslate nohighlight">\(x\)</span> 라는 충분한 정보를 가지고 optimize 시킨다면 정보를 가지지 않고 optimize 시키는 것보다 훨씬 수월할 것입니다.</p>
+</div>
+<div class="section" id="identity-mapping-by-shortcut-skip-connection">
+<h3>Identity mapping by Shortcut (Skip Connection)<a class="headerlink" href="#identity-mapping-by-shortcut-skip-connection" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Shortcut은 추가적인 parameter가 요구되지 않고 계산 복잡성이 높아지지 않는다.</p>
+</div></blockquote>
+<img style="float: left;" src="identity_mapping1.png" height="20px" width="130px">
+&nbsp;&nbsp;&nbsp; $f$ : activation function , $ℱ$ : residual function , $ℎ$ : skip connection function (identity mapping) <br><br>
+&nbsp;&nbsp;&nbsp; $𝒚_l = 𝒉(x_l) + 𝓕(x_l, 𝑾_l)$  &nbsp;,&nbsp;  $x_{l+1} = f(y_l)$ <br><br>
+&nbsp;&nbsp;&nbsp; $f$ 와 $ℎ$ 는 identity mapping 이라 가정하자 <br><br>
+&nbsp;&nbsp;&nbsp; $𝒉(x_l) = x$ &nbsp;,&nbsp; $y_l = x_{l+1}$ <br><br>
+&nbsp;&nbsp;&nbsp; $x_{l+1} = x_l + ℱ(x_l, 𝑾_l)$ <br><br>
+&nbsp;&nbsp;&nbsp; $x_L = x_l + \sum_{i=l}^{L-1}𝓕(x_i, 𝑾_i)$ <br><br>
+&nbsp;&nbsp;&nbsp; $\epsilon$ 은 loss function이라 하면 Chain Rule에 의해
+&nbsp; $\frac{\partial \epsilon}{\partial x_l} = \frac{\partial \epsilon}{\partial x_L} \frac{\partial x_L}{\partial x_l} = \frac{\partial \epsilon}{\partial x_L} ( 1 + \frac{\partial}{\partial x_l} \sum_{i=l}^{L-1}𝓕(x_i, 𝑾_i))$<p>Residual block에서 shortcut을 identity mapping으로 하였을 때, 주는 이점을 설명하려 합니다. <br><br>
+먼저 Residual block에서의 activation function은 <span class="math notranslate nohighlight">\(ReLu\)</span> 이지만 지금은 identity mapping으로 가정을 하였습니다. <br><br>
+즉, identity mapping과 residual function을 더하면 output이 됩니다. (  <span class="math notranslate nohighlight">\(x_{l+1} = x_l + 𝓕(x_l, 𝑾_l)\)</span> )<br><br>
+총 layer의 갯수가 <span class="math notranslate nohighlight">\(L\)</span> 개 있다고 할 때, <span class="math notranslate nohighlight">\(i\)</span>번째 layer부터 <span class="math notranslate nohighlight">\(L\)</span>번째 layer까지 학습을 시키면 <span class="math notranslate nohighlight">\(x_L = x_l + \sum_{i=l}^{L-1}𝓕(x_l, 𝑾_i)\)</span> 가 됩니다. <br><br>
+원래 기존 plain network에서는 matrix-vector product를 통해 학습이 진행되었다면, <br><br>
+residual network에서는 앞선 output들의 덧셈으로 학습이 된다는 의미입니다. <br><br>
+물론, 실제 activation function을 <span class="math notranslate nohighlight">\(ReLu\)</span> 로 사용하게 된다면 output들의 덧셈으로는 표현되지 못하지만 <br><br>
+계산 복잡성이 늘어나지는 않는다는 것을 보여주고 있고 input인 <span class="math notranslate nohighlight">\(x\)</span> 를 그대로 정보로 가져오기에 추가적인 parameter를 사용하지 않습니다. <br><br>
+또한, backward propagation 과정에서도 이점이 생깁니다. <br><br>
+<span class="math notranslate nohighlight">\(\frac{\partial \epsilon}{\partial x_l}\)</span> 은 <span class="math notranslate nohighlight">\(\frac{\partial \epsilon}{\partial x_L}\)</span> 와 <span class="math notranslate nohighlight">\(\frac{\partial \epsilon}{\partial x_L} \frac{\partial}{\partial x_l} \displaystyle\sum_{i=l}^{L-1}𝓕(x_l, 𝑾_i))\)</span> 로 분해됩니다. <br><br>
+따라서 <span class="math notranslate nohighlight">\(\frac{\partial \epsilon}{\partial x_L}\)</span> 의 정보가 weight layer와 관계없이 직접 전달됩니다. (즉, <span class="math notranslate nohighlight">\(L\)</span>번째 layer의 정보가 <span class="math notranslate nohighlight">\(l\)</span>번째 layer에 직접 propagate 됩니다.) <br><br>
+그리고 일반적으로 <span class="math notranslate nohighlight">\(\frac{\partial}{\partial x_l} \sum_{i=l}^{L-1}𝓕(x_l, 𝑾_i))\)</span> 가 항상 -1 이 되지 않기에, weight가 아무리 작아지더라도 gradient가 소멸하는 문제를 개선할 수 있습니다. <br></p>
+<img style="float: left;" src="identity_mapping1.png" height="20px" width="130px">
+&nbsp;&nbsp;&nbsp; $f$ : activation function , $ℱ$ : residual function , $ℎ$ : skip connection function (identity mapping) <br><br>
+&nbsp;&nbsp;&nbsp; $𝒚_l = 𝒉(x_l) + 𝓕(x_l, 𝑾_l)$  &nbsp;,&nbsp;  $x_{l+1} = f(y_l)$ <br><br>
+&nbsp;&nbsp;&nbsp; $f$ 는 identity mapping $h(x_l) = \lambda_lx_l$ 이라 가정하자 <br><br>
+&nbsp;&nbsp;&nbsp; $𝒉(x_l) = \lambda_lx_l$ &nbsp;,&nbsp; $y_l = x_{l+1}$ <br><br>
+&nbsp;&nbsp;&nbsp; $x_{l+1} = \lambda_lx_l + ℱ(x_l, 𝑾_l)$ <br><br>
+&nbsp;&nbsp;&nbsp; $x_L = ( \prod_{i=l}^{L-1} \lambda_i )x_l + \sum_{i=l}^{L-1}\hatℱ(x_i, 𝑾_i)$ , 이 때, $\hat{ℱ}(x_i, 𝑾_i) = ( \prod_{j=i+1}^{L-1} \lambda_j )$  $ℱ(x_i, 𝑾_i)$ <br><br>
+&nbsp;&nbsp;&nbsp; $\epsilon$ 은 loss function이라 할 때, 앞선 과정과 비슷하게
+&nbsp; $\frac{\partial \epsilon}{\partial x_l} = \frac{\partial \epsilon}{\partial x_L} \frac{\partial x_L}{\partial x_l} = \frac{\partial \epsilon}{\partial x_L} ( ( \prod_{i=l}^{L-1} \lambda_i ) + \frac{\partial}{\partial x_l} \sum_{i=l}^{L-1}𝓕(x_l, 𝑾_i))$<p>shortcut을 identity mapping이 아닌 <span class="math notranslate nohighlight">\( h(x) = \lambda_i x_i\)</span>으로 변경하면 어떻게 되는지 설명하려 합니다. <br><br>
+먼저 L 이 충분히 크다고 가정합니다 ( 즉, 굉장히 깊은 네트워크로 가정합니다. ) <br><br>
+만약 모든 i에 대하여 <span class="math notranslate nohighlight">\(\lambda_i x_i\)</span> &gt; 1 이면, <span class="math notranslate nohighlight">\(\frac{\partial \epsilon}{\partial x_l}\)</span> 은 기하급수적으로 커질 것입니다.<br><br>
+이는 결국 gradient exploding problem으로 인해 학습에 큰 문제가 됩니다.<br><br>
+그렇다면 만약 모든 i에 대하여 <span class="math notranslate nohighlight">\(\lambda_i x_i\)</span> &lt; 1 이라고 한다면 어떻게 될까요?<br><br>
+이 경우, <span class="math notranslate nohighlight">\(\frac{\partial \epsilon}{\partial x_l}\)</span> 가 너무 작아지거나 소멸하게 되어 결국 gradient vanishing problem이 생깁니다.<br><br>
+따라서, <span class="math notranslate nohighlight">\( h(x) = \lambda_i x_i\)</span> 으로 shortcut을 지정하는 것은 좋은 선택이 아닙니다. <br></p>
+<img style="float: left;" src="shortcut_1.png" height="150px" width="400px">
+&nbsp;&nbsp;&nbsp; 110-layer ResNet on CIFAR-10 <br><br>
+&nbsp;&nbsp;&nbsp; (a) $h(x) = x$ &nbsp;,&nbsp; error : 6.61% <br><br>
+&nbsp;&nbsp;&nbsp; (b) $h(x) = 0.5x$ &nbsp;,&nbsp; error : 12.35% <br><br>
+&nbsp;&nbsp;&nbsp; (c) $h(x) = (1 - g(x))\cdot x$ &nbsp;,&nbsp; error : 8.70% <br><br>
+&nbsp;&nbsp;&nbsp; (d) $h(x) = (1 - g(x))\cdot x$ &nbsp;,&nbsp; error : 6.91% <br><br>
+&nbsp;&nbsp;&nbsp; (e) $h(x) = 1x1 conv(x)$ &nbsp;,&nbsp; error : 12.22% <br><br>
+&nbsp;&nbsp;&nbsp; (e) $h(x) = dropout(x)$ &nbsp;,&nbsp; error > 20% <br><br><p>마찬가지로 shortcut을 다양한 함수로 변형하여 실험을 해본 결과입니다. <br><br>
+(b) ~ (f) 까지의 shortcut은 정보가 직접 전달되지 않다보니 최적화하기 어려워지는 것으로 추정됩니다. <br><br>
+따라서, identity shortcut은 다른 shortcut에 비해 성능과 속도면에서 우위에 있습니다.</p>
+</div>
+<div class="section" id="pre-activation">
+<h3>Pre-activation<a class="headerlink" href="#pre-activation" title="Permalink to this headline">¶</a></h3>
+<p>1.4의 설명에서 activation function을 identity mapping으로 설정할 경우, 많은 장점이 있다는 것을 수식으로 알 수 있었습니다. <br><br></p>
+<blockquote>
+<div><p>그렇다면 activation function을 ReLU가 아닌 identity mapping으로 사용할 수 없을까?</p>
+</div></blockquote>
+<p>기존 Residual Network에서의 activation function은 <span class="math notranslate nohighlight">\(ReLU\)</span> 입니다. <br><br>
+만약 <span class="math notranslate nohighlight">\(l\)</span>번째 layer에서 <span class="math notranslate nohighlight">\(x_{l+1} = f(y_l)\)</span> , <span class="math notranslate nohighlight">\(f = ReLU\)</span> 이라고 한다면, <span class="math notranslate nohighlight">\(f(y_l)\)</span> 은 <span class="math notranslate nohighlight">\(l+1\)</span>번째 layer에서 residual block과 identity mapping으로 나뉘어 집니다.<br><br>
+즉 , <span class="math notranslate nohighlight">\(y_{l+1} = f(y_l) + ℱ(f(y_l), 𝑾_l)\)</span> 으로 나타나게 됩니다.<br><br>
+하지만 <span class="math notranslate nohighlight">\(ReLU\)</span>은 addition에 많은 영향을 주게 되어 최적화하기 어려워지게 됩니다.</p>
+<img style="float: left;" src="preactivation1.png" height="50px" width="200px">
+&nbsp;&nbsp;&nbsp; (b)는 (a)에서의 BatchNormalization과 ReLU를 위치만 변경하여. <br><br>
+&nbsp;&nbsp;&nbsp; shortcut과 Residual block의 addition 이외에는 어떠한 연산도 없도록 만들었습니다.  <br><br>
+&nbsp;&nbsp;&nbsp; 이는 (b)의 activation function을 identity mapping으로 변경되도록 합니다. <br><br>
+&nbsp;&nbsp;&nbsp; $x_{l+1} = f(y_l)$ &nbsp;,&nbsp; $f(x) =$ identity mapping &nbsp;,&nbsp; $\hat f = ReLU$ 이라고 하면,&nbsp; $x_{l+1} = x_l + ℱ(\hat f(y_l), 𝑾_l)$ <br><br>
+&nbsp;&nbsp;&nbsp; Pre-activation 구조는 최적화하기 쉽고 overfitting을 방지할 수 있습니다. (1.4 참조)
+</div>
+</div>
+<div class="section" id="wide-residual-networks">
+<h2>Wide Residual Networks<a class="headerlink" href="#wide-residual-networks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Problem Statement<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Each fraction of a percent of improved accuracy costs nearly doubling the number of layers</p>
+</div></blockquote>
+<br>
+기존 ResNet에서는 네트워크의 깊이를 깊게 할까에 초점을 맞추었다면, wide resnet에서는 깊이보다는 filter의 수를 늘리는데 관심을 가집니다. <br><br>
+이 이유는 단순히 깊이만 깊게한다면 학습 속도가 느려지고, 그에 상응하는 정확도는 조금 밖에 상승하지않는 문제점이 있습니다. <br><br>
+따라서, filter의 수를 늘리고 네트워크의 깊이는 조금 줄여서 학습 속도를 빠르게 만드는 방법에 대해 고민해보고자 합니다. <br><br>
+이 장에서는 이론적인 이유보다는 실험적으로 성능 향상이 되었다는 내용을 중심으로 다루려 합니다.<br></div>
+<div class="section" id="architecture-of-wide-resnet">
+<h3>Architecture of Wide ResNet<a class="headerlink" href="#architecture-of-wide-resnet" title="Permalink to this headline">¶</a></h3>
+<img style="float: left;" src="wide_resnet.png" height="50px" width="500px">
+<img style="float: left;" src="wide_resnet1.png" height="50px" width="500px"><p>위 그림에서 3x3은 kernel size를 의미하고 filter의 수를 k배 (2배, 4배, 8배…)를 해줍니다. <br><br>
+이 때, 각 residual block의 개수 또한 N배를 해줍니다. <br><br></p>
+</div>
+<div class="section" id="experiments">
+<h3>Experiments<a class="headerlink" href="#experiments" title="Permalink to this headline">¶</a></h3>
+<img style="float: left;" src="wide_test.png" height="50px" width="500px"><p>위 그림은 깊이와 k(기존 filter의 수 x k배)를 하였을 때의 test error입니다. <br><br>
+깊이가 깊어질수록 성능이 향상은 이루어지지만, 그 차이가 미미한 것을 볼 수 있습니다. <br><br>
+반면, filter의 수를 늘리고 깊이를 얕게 하면, 깊이가 깊은 네트워크와 성능은 비슷하지만 학습 속도면에서 빠릅니다. <br><br>
+이는 filter의 수가 늘어남에 따라, image의 특징을 더욱 잘 파악하게 되어 기존 깊이가 깊은 네트워크와 성능이 비슷합니다.</p>
+</div>
+</div>
+<div class="section" id="resnext">
+<h2>ResNeXt<a class="headerlink" href="#resnext" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>Problem Statement<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Increasing cardinality is more effective than going deeper or wider when we increase the capacity.</p>
+</div></blockquote>
+<br>
+기존 ResNet과 Wide ResNet에서는 네트워크의 depth와 width에 초점을 두었습니다. <br><br>
+그리고 한 없이 네트워크를 깊게 만드는 것 보다는 filter의 수를 늘려 적당한 depth와 적당한 width를 가지도록 네트워크를 만드는 것이 중요하는 것을 알게 되었습니다. <br><br>
+이 장에서는 몇 개의 hyperparameter를 사용하여 동차인 다중 분기 architecture인 cardinality를 소개하려 합니다. <br><br>
+이 개념은 inception model 구조와 비슷합니다. <br><br>
+하지만 기존 inception model 구조는 구현하는데 있어서 복잡한 요소들이 많았습니다. <br><br>
+필터 번호와 크기는 각 개별 변환에 맞게 조정되고 모듈은 단계별로 맞춤화 되어집니다. <br><br>
+이는 새로운 dataset이나 task들에 적용하는데 큰 어려움이 있습니다. <br><br></div>
+<div class="section" id="architecture-of-resnext">
+<h3>Architecture of ResNeXt<a class="headerlink" href="#architecture-of-resnext" title="Permalink to this headline">¶</a></h3>
+<img style="float: left;" src="resnext.png" height="50px" width="500px"><p>좌측 그림은 기존 ResNet이고 우측 그림은 ResNeXt를 나타낸다. <br><br>
+ResNeXt의 방식은 쉽고 확장 가능하고 분할,변환,병합 전략을 활용하여 VGGnet과 ResNet의 반복 레이어 전략을 채택한 간단한 architecture입니다. <br><br>
+네트워크의 모듈은 각각 저차원 임베딩에서 일련의 변환을 수행하며 덧셈을 통해 output이 출력됩니다.</p>
+</div>
+<div class="section" id="aggregated-transformations">
+<h3>Aggregated Transformations<a class="headerlink" href="#aggregated-transformations" title="Permalink to this headline">¶</a></h3>
+<img style="float: left;" src="resnext1.png" height="50px" width="700px"><p><code class="docutils literal notranslate"><span class="pre">Network-in-Network</span></code>는 네트워크의 깊이를 깊게 하기 위한 방법에 반해, ResNext에서는 <code class="docutils literal notranslate"><span class="pre">Network-in-Neuron</span></code>을 사용합니다.<br><br>
+<span class="math notranslate nohighlight">\(ℱ(x) = \sum_{i=1}^C T_i(x))\)</span> 여기서 <span class="math notranslate nohighlight">\(T_i\)</span> 는 여러가지 함수가 됩니다. <br><br>
+단순한 뉴런과 유사하게 <span class="math notranslate nohighlight">\(T_i\)</span>는 <span class="math notranslate nohighlight">\(x\)</span>를 (선택적으로 저차원) 임베딩으로 투영한 다음 이를 변환해야합니다. <br><br>
+따라서 ResNeXt 블록은 <span class="math notranslate nohighlight">\(y = x + \sum_{i=1}^C T_i(x))\)</span> 으로 나타낼 수 있습니다. <br><br>
+위의 그림에서 (a), (b), (c)는 모두 ResNeXt 블록과 동형인 블록입니다. <br><br>
+그림 (b)는 여러 경로를 연결한다는 점에서 Inception과 ResNet 모듈과 유사합니다. <br><br>
+하지만 우리 모듈은 모든 경로가 동일한 topology를 공유하므로 경로 수를 쉽게 분리할 수 있다는 점에서 기존의 모든 Inception 모듈과 다릅니다. <br><br>
+그리고 혼동하지말아야 할 점은 그림 (c)는 ResNet에서의 bottleneck block 형태가 아닌 32개의 cardinality를 가진 네트워크라는 점입니다. <br><br></p>
+</div>
+<div class="section" id="id3">
+<h3>Experiments<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<img style="float: left;" src="resnext2.png" height="50px" width="700px"><p>같은 복잡도를 가진 ResNet와 ResNeXt를 비교하였을 때, 확실히 ResNeXt가 조금 더 좋은 성능을 가지고 있다고 할 수 있습니다.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="ch02.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">이론부</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="ch03.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">적용부</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By PseudoLab<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

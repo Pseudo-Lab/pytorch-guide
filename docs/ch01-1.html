@@ -5,44 +5,44 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1. Tensor Allocation &#8212; PseudoLab PyTorch guide</title>
+    <title>Tensor &#8212; PseudoLab PyTorch guide</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     
       
 
     
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -51,80 +51,19 @@
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data" href="ch01-2.html" />
+    <link rel="prev" title="기초부" href="ch01.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -141,60 +80,60 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../index.html">
+    <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
       
       
-      <img src="../../_static/PseudoLab_logo.png" class="logo" alt="logo">
+      <img src="../_static/PseudoLab_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">PseudoLab PyTorch guide</h1>
       
     </a>
-</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../index.html">
+  <a class="reference internal" href="index.html">
    [가짜연구소 3기] PyTorch 가이드
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ch01.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="ch01.html">
    기초부
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ch01-1.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Tensor
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ch01-2.html">
+    <a class="reference internal" href="ch01-2.html">
      Data
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ch01-3.html">
+    <a class="reference internal" href="ch01-3.html">
      Model
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ch02.html">
+  <a class="reference internal" href="ch02.html">
    이론부
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -204,14 +143,14 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ch02-1.html">
+    <a class="reference internal" href="ch02-1.html">
      ResNet 시작하기
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ch03.html">
+  <a class="reference internal" href="ch03.html">
    적용부
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -221,14 +160,14 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ch03-1.html">
+    <a class="reference internal" href="ch03-1.html">
      PyTorch 로 ResNet 구현하기
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ch04.html">
+  <a class="reference internal" href="ch04.html">
    활용부
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
@@ -238,7 +177,7 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ch04-1.html">
+    <a class="reference internal" href="ch04-1.html">
      PyTorch 로 Transfer-Learning 하기
     </a>
    </li>
@@ -285,7 +224,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/docs/ch1/Tensor Allocation.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/docs/ch01-1.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -305,7 +244,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/Pseudo-Lab/pytorch-guide/issues/new?title=Issue%20on%20page%20%2Fdocs/ch1/Tensor Allocation.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/Pseudo-Lab/pytorch-guide/issues/new?title=Issue%20on%20page%20%2Fdocs/ch01-1.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -326,10 +265,10 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/Pseudo-Lab/pytorch-guide/master?urlpath=tree/book/docs/ch1/Tensor Allocation.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Pseudo-Lab/pytorch-guide/master?urlpath=tree/book/docs/ch01-1.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
+                    src="../_static/images/logo_binder.svg"
                     alt="Interact on binder">Binder</button></a>
         
         
@@ -349,29 +288,29 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   1.1 텐서 선언
+  <a class="reference internal nav-link" href="#tensor-allocation">
+   1. Tensor Allocation
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     1.1.1 직접 선언
+    <a class="reference internal nav-link" href="#id1">
+     1.1 직접 텐서 선언
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     1.1.2 크기에 따라 선언
+    <a class="reference internal nav-link" href="#id2">
+     1.2 크기에 따라 텐서 선언
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
+  <a class="reference internal nav-link" href="#id3">
    1.2 텐서 생성
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
+    <a class="reference internal nav-link" href="#id4">
      1.2.1 직접 생성
     </a>
    </li>
@@ -381,13 +320,97 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
+    <a class="reference internal nav-link" href="#id5">
      1.2.3 다른 텐서에서 생성
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
+    <a class="reference internal nav-link" href="#id6">
      1.1.4 기타
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tensor-approach">
+   2. Tensor approach
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing-slicing">
+     2.1 Indexing, Slicing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transposing">
+     2.2 Transposing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#broadcasting">
+     2.3 Broadcasting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-place">
+     2.4 In-place
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arithmetic-operation">
+   3 Arithmetic Operation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrix-multiplication">
+   3.1 Matrix Multiplication
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mean">
+   3.2 Mean
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sum">
+   3.3 Sum
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#max">
+   3.4 Max
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tensor-manipulation">
+   4 Tensor Manipulation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#view">
+     4.1 View
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#squeeze">
+     4.2 Squeeze
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#type-casting">
+     4.3 Type Casting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#concatenate">
+     4.4 Concatenate
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stacking">
+     4.4 Stacking
     </a>
    </li>
   </ul>
@@ -403,8 +426,17 @@
         
               <div>
                 
-  <div class="section" id="tensor-allocation">
-<h1>1. Tensor Allocation<a class="headerlink" href="#tensor-allocation" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="tensor">
+<h1>Tensor<a class="headerlink" href="#tensor" title="Permalink to this headline">¶</a></h1>
+<p>PyTorch 의 기본적인 자료구조 Tensor에 대해 살펴보고, 조작하는 방법을 안내합니다.</p>
+<ul class="simple">
+<li><p>담당자: 권지현 님</p></li>
+<li><p>최종수정일: 21-09-29</p></li>
+<li><p>본 자료는 가짜연구소 3기 Pytorch guide 크루 활동으로 작성됨</p></li>
+</ul>
+<hr class="docutils" />
+<div class="section" id="tensor-allocation">
+<h2>1. Tensor Allocation<a class="headerlink" href="#tensor-allocation" title="Permalink to this headline">¶</a></h2>
 <p>데이터 자료구조를 차원에 따라 나누면 아래와 같이 분류할 수 있습니다. 물론 저 차원의 텐서, 고 차원의 행렬 등도 존재할 수 있습니다.</p>
 <ol class="simple">
 <li><p>스칼라 : 차원 없음</p></li>
@@ -415,9 +447,7 @@
 <p>그 중에서도 텐서(Tensor) 는 딥러닝의 대표적인 자료구조로 배열, 행렬 등과 유사한 형태를 가지고 있습니다. Pytorch 에서는 텐서를 활용하여 모델의 입력과 출력, 연산을 수행합니다. 본 챕터에서는 텐서를 어떻게 활용, 조작할 수 있는지에 대해 소개하겠습니다.</p>
 <hr class="docutils" />
 <div class="section" id="id1">
-<h2>1.1 텐서 선언<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id2">
-<h3>1.1.1 직접 선언<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3>1.1 직접 텐서 선언<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">torch</span></code> 의 <code class="docutils literal notranslate"><span class="pre">tensor</span></code> 매서드를 사용하여 바로 텐서를 선언할 수 있습니다. 선언 방식은 <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> 선언과 유사합니다.
 0부터 1까지의 정수로 구성된 1차원 텐서를 선언하겠습니다.</p>
 <div class="cell docutils container">
@@ -465,8 +495,8 @@
 <p>데이터 타입에 따른 각각의 차원의 텐서들을 직접 선언하였습니다. 이하에서는 기존 데이터를 사용하여 텐서를 선언하는 방법에 대해 다루겠습니다.</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="id3">
-<h3>1.1.2 크기에 따라 선언<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>1.2 크기에 따라 텐서 선언<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>텐서의 차원을 미리 결정한 후 random 하게 텐서를 구성할 수 있습니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -481,13 +511,13 @@
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id4">
-<h2>1.2 텐서 생성<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2>1.2 텐서 생성<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>텐서를 선언하는 방법에 대해 안내하겠습니다.
 텐서는 기존 데이터로부터 직접 생성하는 방법, <code class="docutils literal notranslate"><span class="pre">Numpy</span></code> 의 <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> 를 사용하는 방법, 이미 선언된 텐서를 활용하는 방법 등이 있습니다.</p>
 <hr class="docutils" />
-<div class="section" id="id5">
-<h3>1.2.1 직접 생성<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3>1.2.1 직접 생성<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>원본 데이터로부터 직접 텐서를 생성, 선언하는 방법에 대해 알아보겠습니다.</p>
 <p><code class="docutils literal notranslate"><span class="pre">torch</span></code> 의 <code class="docutils literal notranslate"><span class="pre">tensor</span></code> 매서드를 사용합니다.</p>
 <div class="cell docutils container">
@@ -592,13 +622,64 @@
 </div>
 </div>
 </div>
-<div class="section" id="id6">
-<h3>1.2.3 다른 텐서에서 생성<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>1.2.3 다른 텐서에서 생성<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>이미 생성된 텐서를 사용할 수 있습니다. <code class="docutils literal notranslate"><span class="pre">torch</span></code> 의 <code class="docutils literal notranslate"><span class="pre">ones_like</span></code>, <code class="docutils literal notranslate"><span class="pre">rand_like</span></code> 매서드가 사용됩니다.</p>
 </div>
-<div class="section" id="id7">
-<h3>1.1.4 기타<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3>1.1.4 기타<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">torch</span></code> 의 <code class="docutils literal notranslate"><span class="pre">ones_like</span></code>, <code class="docutils literal notranslate"><span class="pre">rand_like</span></code> 매서드를 사용하면 무작위의 수, 상수 값을 사용하는 텐서를 선언할 수 있습니다.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="tensor-approach">
+<h2>2. Tensor approach<a class="headerlink" href="#tensor-approach" title="Permalink to this headline">¶</a></h2>
+<p>텐서 조작과 연산에 대해 살펴보겠습니다.</p>
+<hr class="docutils" />
+<div class="section" id="indexing-slicing">
+<h3>2.1 Indexing, Slicing<a class="headerlink" href="#indexing-slicing" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="transposing">
+<h3>2.2 Transposing<a class="headerlink" href="#transposing" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="broadcasting">
+<h3>2.3 Broadcasting<a class="headerlink" href="#broadcasting" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="in-place">
+<h3>2.4 In-place<a class="headerlink" href="#in-place" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="arithmetic-operation">
+<h2>3 Arithmetic Operation<a class="headerlink" href="#arithmetic-operation" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="matrix-multiplication">
+<h2>3.1 Matrix Multiplication<a class="headerlink" href="#matrix-multiplication" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="mean">
+<h2>3.2 Mean<a class="headerlink" href="#mean" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="sum">
+<h2>3.3 Sum<a class="headerlink" href="#sum" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="max">
+<h2>3.4 Max<a class="headerlink" href="#max" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="tensor-manipulation">
+<h2>4 Tensor Manipulation<a class="headerlink" href="#tensor-manipulation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="view">
+<h3>4.1 View<a class="headerlink" href="#view" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="squeeze">
+<h3>4.2 Squeeze<a class="headerlink" href="#squeeze" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="type-casting">
+<h3>4.3 Type Casting<a class="headerlink" href="#type-casting" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="concatenate">
+<h3>4.4 Concatenate<a class="headerlink" href="#concatenate" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="stacking">
+<h3>4.4 Stacking<a class="headerlink" href="#stacking" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 </div>
@@ -616,7 +697,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./docs\ch1"
+            path: "./docs"
         },
         predefinedOutput: true
     }
@@ -632,6 +713,24 @@
 
 <div class='prev-next-bottom'>
     
+    <div id="prev">
+        <a class="left-prev" href="ch01.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">기초부</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="ch01-2.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Data</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
 
 </div>
         
@@ -653,7 +752,7 @@
       </div>
     </div>
   
-  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
   
   </body>

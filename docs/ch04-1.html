@@ -1,0 +1,864 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PyTorch 로 Transfer-Learning 하기 &#8212; PseudoLab PyTorch guide</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="활용부" href="ch04.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/PseudoLab_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">PseudoLab PyTorch guide</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   [가짜연구소 3기] PyTorch 가이드
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch01.html">
+   기초부
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch01-1.html">
+     Tensor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch01-2.html">
+     Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch01-3.html">
+     Model
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch02.html">
+   이론부
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch02-1.html">
+     ResNet 시작하기
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch03.html">
+   적용부
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch03-1.html">
+     PyTorch 로 ResNet 구현하기
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="ch04.html">
+   활용부
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     PyTorch 로 Transfer-Learning 하기
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/ch04-1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Pseudo-Lab/pytorch-guide"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/Pseudo-Lab/pytorch-guide/issues/new?title=Issue%20on%20page%20%2Fdocs/ch04-1.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Pseudo-Lab/pytorch-guide/master?urlpath=tree/book/docs/ch04-1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-load">
+   01 data load
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training">
+   02 training
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="pytorch-transfer-learning">
+<h1>PyTorch 로 Transfer-Learning 하기<a class="headerlink" href="#pytorch-transfer-learning" title="Permalink to this headline">¶</a></h1>
+<p>이전 챕터에서 pytorch 로 resnet 구현과 관련한 내용을 다루었습니다. 이번 노트북에서는 pytorch 로 resnet 모델을 학습하는 방법에 대해 살펴보겠습니다.</p>
+<ul class="simple">
+<li><p>담당자: 권지현 님</p></li>
+<li><p>최종수정일: 21-09-29</p></li>
+<li><p>본 자료는 가짜연구소 3기 Pytorch guide 크루 활동으로 작성됨</p></li>
+</ul>
+<div class="section" id="data-load">
+<h2>01 data load<a class="headerlink" href="#data-load" title="Permalink to this headline">¶</a></h2>
+<p>본 노트북에서는 <code class="docutils literal notranslate"><span class="pre">torchvision</span></code> 에서 제공하는 데이터 셋을 활용합니다. <code class="docutils literal notranslate"><span class="pre">torchvision</span></code> 에 대한 설명은 링크 를 참조바랍니다.</p>
+<p>데이터셋을 활용하기 위한 라이브러리를 import 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># torchvision 관련 라이브러리 import</span>
+
+<span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">utils</span>
+<span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="k">as</span> <span class="nn">transforms</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>사용할 데이터 셋은 <code class="docutils literal notranslate"><span class="pre">STL10</span></code> 입니다. <code class="docutils literal notranslate"><span class="pre">STL10</span></code>은 Image Classification 의 벤치마크로 10개의 라벨을 가진 데이터 셋 입니다. <code class="docutils literal notranslate"><span class="pre">torchvisvion</span></code> 에서는 5000개의 train 데이터와 8000개의 test 로 구성되어 있으며, <code class="docutils literal notranslate"><span class="pre">datasets.STL10</span></code> 매소드로 다운받을 수 있습니다.</p>
+<p>경로를 설정한 후 train, test 데이터를 다운받습니다. 경로는 단순히 root 에 폴더를 생성하여 지정하였습니다.</p>
+<p>transforms 은 <code class="docutils literal notranslate"><span class="pre">ToTensor()</span></code>로 설정합니다. transforms 에 대한 설명은 링크 를 참조 바랍니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s1">&#39;./train&#39;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s1">&#39;./test&#39;</span><span class="p">)</span>
+
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">STL10</span><span class="p">(</span><span class="s1">&#39;/train&#39;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">())</span>
+<span class="n">test_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">STL10</span><span class="p">(</span><span class="s1">&#39;/test&#39;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files already downloaded and verified
+Downloading http://ai.stanford.edu/~acoates/stl10/stl10_binary.tar.gz to /test/stl10_binary.tar.gz
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "c6ead7bb5c34412786b80a0a427fda74", "version_major": 2, "version_minor": 0}
+</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting /test/stl10_binary.tar.gz to /test
+</pre></div>
+</div>
+</div>
+</div>
+<p>다운받은 이미지에 대해 스케일링 과정이 필요합니다.
+<code class="docutils literal notranslate"><span class="pre">transform</span></code> 을 활용하여 이미지 크기를 고정하고, <code class="docutils literal notranslate"><span class="pre">normalization</span></code>을 진행합니다.</p>
+<p>주어진 데이터셋의 이미지는 RGB 3개의 채널로 구성되어 있으므로, 우선 채널 별 mean 값과 std 값을 계산한 후 transform 을 정의합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># 채널 별 mean 계산</span>
+<span class="k">def</span> <span class="nf">get_mean</span><span class="p">(</span><span class="n">dataset</span><span class="p">):</span>
+  <span class="n">meanRGB</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="k">for</span> <span class="n">image</span><span class="p">,</span><span class="n">_</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">]</span>
+  <span class="n">meanR</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">meanRGB</span><span class="p">])</span>
+  <span class="n">meanG</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">meanRGB</span><span class="p">])</span>
+  <span class="n">meanB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">meanRGB</span><span class="p">])</span>
+  <span class="k">return</span> <span class="p">[</span><span class="n">meanR</span><span class="p">,</span> <span class="n">meanG</span><span class="p">,</span> <span class="n">meanB</span><span class="p">]</span>
+
+<span class="c1"># 채널 별 str 계산</span>
+<span class="k">def</span> <span class="nf">get_std</span><span class="p">(</span><span class="n">dataset</span><span class="p">):</span>
+  <span class="n">stdRGB</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="k">for</span> <span class="n">image</span><span class="p">,</span><span class="n">_</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">]</span>
+  <span class="n">stdR</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">stdRGB</span><span class="p">])</span>
+  <span class="n">stdG</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">stdRGB</span><span class="p">])</span>
+  <span class="n">stdB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">stdRGB</span><span class="p">])</span>
+  <span class="k">return</span> <span class="p">[</span><span class="n">stdR</span><span class="p">,</span> <span class="n">stdG</span><span class="p">,</span> <span class="n">stdB</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>transforms.Compose 매소드로 trainsform 단계를 묶어서 진행할 수 있습니다. 본 노트북에서는 이미지의 크기를 임의로 128로 고정한 후, 정규화하는 과정만 진행하겠습니다. 보다 다양한 augmentation 방법은 링크 를 참조바랍니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_transforms</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">transforms</span><span class="o">.</span><span class="n">Resize</span><span class="p">((</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">)),</span>
+                                       <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                                       <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">get_mean</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">),</span> <span class="n">get_std</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">))])</span>
+<span class="n">test_transforms</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">transforms</span><span class="o">.</span><span class="n">Resize</span><span class="p">((</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">)),</span>
+                                      <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                                      <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">get_mean</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">),</span> <span class="n">get_std</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">))])</span>
+
+<span class="c1"># trainsform 정의</span>
+<span class="n">train_dataset</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">train_transforms</span>
+<span class="n">test_dataset</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">test_transforms</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>이후 dataloader 를 정의합니다. batch size 는 임의로 128, 64로 설정해두었습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataloader 정의</span>
+<span class="n">train_dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">test_dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>데이터 사용을 위한 준비가 완료되었습니다.</p>
+</div>
+<div class="section" id="training">
+<h2>02 training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h2>
+<p>모델 학습을 위해 pretrained 된 resnet 50 모델을 사용하겠습니다.
+해당 resnet 모델은 사전 학습된 모델로, 이미지 분류 문제를 해결할 수 있도록 규모가 큰 데이터(ImageNet)로 미리 학습된 모델을 의미합니다.</p>
+<p>torchvision model 에서 구현된 resnet의 구조는 이전 챕터에서 다루었습니다. 관련 내용은 링크 를 참조 바랍니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;cpu&#39;</span><span class="p">)</span> <span class="c1"># 학습 환경 설정</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">resnet50</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span> <span class="c1"># true 옵션으로 사전 학습된 모델을 로드</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading: &quot;https://download.pytorch.org/models/resnet50-0676ba61.pth&quot; to /root/.cache/torch/hub/checkpoints/resnet50-0676ba61.pth
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "64f88d4da0814d0587184742691a33f1", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>torchsummary의 summary 매소드로 모델을 요약하여 확인할 수 있습니다. 사용할 데이터 셋은 128*128 크기의 RGB 3개의 chennel로 구성되어 있습니다. 모델의 layer 별 파라미터 개수는 다음과 같습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torchsummary</span> <span class="kn">import</span> <span class="n">summary</span>
+<span class="n">summary</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1           [-1, 64, 64, 64]           9,408
+       BatchNorm2d-2           [-1, 64, 64, 64]             128
+              ReLU-3           [-1, 64, 64, 64]               0
+         MaxPool2d-4           [-1, 64, 32, 32]               0
+            Conv2d-5           [-1, 64, 32, 32]           4,096
+       BatchNorm2d-6           [-1, 64, 32, 32]             128
+              ReLU-7           [-1, 64, 32, 32]               0
+            Conv2d-8           [-1, 64, 32, 32]          36,864
+       BatchNorm2d-9           [-1, 64, 32, 32]             128
+             ReLU-10           [-1, 64, 32, 32]               0
+           Conv2d-11          [-1, 256, 32, 32]          16,384
+      BatchNorm2d-12          [-1, 256, 32, 32]             512
+           Conv2d-13          [-1, 256, 32, 32]          16,384
+      BatchNorm2d-14          [-1, 256, 32, 32]             512
+             ReLU-15          [-1, 256, 32, 32]               0
+       Bottleneck-16          [-1, 256, 32, 32]               0
+           Conv2d-17           [-1, 64, 32, 32]          16,384
+      BatchNorm2d-18           [-1, 64, 32, 32]             128
+             ReLU-19           [-1, 64, 32, 32]               0
+           Conv2d-20           [-1, 64, 32, 32]          36,864
+      BatchNorm2d-21           [-1, 64, 32, 32]             128
+             ReLU-22           [-1, 64, 32, 32]               0
+           Conv2d-23          [-1, 256, 32, 32]          16,384
+      BatchNorm2d-24          [-1, 256, 32, 32]             512
+             ReLU-25          [-1, 256, 32, 32]               0
+       Bottleneck-26          [-1, 256, 32, 32]               0
+           Conv2d-27           [-1, 64, 32, 32]          16,384
+      BatchNorm2d-28           [-1, 64, 32, 32]             128
+             ReLU-29           [-1, 64, 32, 32]               0
+           Conv2d-30           [-1, 64, 32, 32]          36,864
+      BatchNorm2d-31           [-1, 64, 32, 32]             128
+             ReLU-32           [-1, 64, 32, 32]               0
+           Conv2d-33          [-1, 256, 32, 32]          16,384
+      BatchNorm2d-34          [-1, 256, 32, 32]             512
+             ReLU-35          [-1, 256, 32, 32]               0
+       Bottleneck-36          [-1, 256, 32, 32]               0
+           Conv2d-37          [-1, 128, 32, 32]          32,768
+      BatchNorm2d-38          [-1, 128, 32, 32]             256
+             ReLU-39          [-1, 128, 32, 32]               0
+           Conv2d-40          [-1, 128, 16, 16]         147,456
+      BatchNorm2d-41          [-1, 128, 16, 16]             256
+             ReLU-42          [-1, 128, 16, 16]               0
+           Conv2d-43          [-1, 512, 16, 16]          65,536
+      BatchNorm2d-44          [-1, 512, 16, 16]           1,024
+           Conv2d-45          [-1, 512, 16, 16]         131,072
+      BatchNorm2d-46          [-1, 512, 16, 16]           1,024
+             ReLU-47          [-1, 512, 16, 16]               0
+       Bottleneck-48          [-1, 512, 16, 16]               0
+           Conv2d-49          [-1, 128, 16, 16]          65,536
+      BatchNorm2d-50          [-1, 128, 16, 16]             256
+             ReLU-51          [-1, 128, 16, 16]               0
+           Conv2d-52          [-1, 128, 16, 16]         147,456
+      BatchNorm2d-53          [-1, 128, 16, 16]             256
+             ReLU-54          [-1, 128, 16, 16]               0
+           Conv2d-55          [-1, 512, 16, 16]          65,536
+      BatchNorm2d-56          [-1, 512, 16, 16]           1,024
+             ReLU-57          [-1, 512, 16, 16]               0
+       Bottleneck-58          [-1, 512, 16, 16]               0
+           Conv2d-59          [-1, 128, 16, 16]          65,536
+      BatchNorm2d-60          [-1, 128, 16, 16]             256
+             ReLU-61          [-1, 128, 16, 16]               0
+           Conv2d-62          [-1, 128, 16, 16]         147,456
+      BatchNorm2d-63          [-1, 128, 16, 16]             256
+             ReLU-64          [-1, 128, 16, 16]               0
+           Conv2d-65          [-1, 512, 16, 16]          65,536
+      BatchNorm2d-66          [-1, 512, 16, 16]           1,024
+             ReLU-67          [-1, 512, 16, 16]               0
+       Bottleneck-68          [-1, 512, 16, 16]               0
+           Conv2d-69          [-1, 128, 16, 16]          65,536
+      BatchNorm2d-70          [-1, 128, 16, 16]             256
+             ReLU-71          [-1, 128, 16, 16]               0
+           Conv2d-72          [-1, 128, 16, 16]         147,456
+      BatchNorm2d-73          [-1, 128, 16, 16]             256
+             ReLU-74          [-1, 128, 16, 16]               0
+           Conv2d-75          [-1, 512, 16, 16]          65,536
+      BatchNorm2d-76          [-1, 512, 16, 16]           1,024
+             ReLU-77          [-1, 512, 16, 16]               0
+       Bottleneck-78          [-1, 512, 16, 16]               0
+           Conv2d-79          [-1, 256, 16, 16]         131,072
+      BatchNorm2d-80          [-1, 256, 16, 16]             512
+             ReLU-81          [-1, 256, 16, 16]               0
+           Conv2d-82            [-1, 256, 8, 8]         589,824
+      BatchNorm2d-83            [-1, 256, 8, 8]             512
+             ReLU-84            [-1, 256, 8, 8]               0
+           Conv2d-85           [-1, 1024, 8, 8]         262,144
+      BatchNorm2d-86           [-1, 1024, 8, 8]           2,048
+           Conv2d-87           [-1, 1024, 8, 8]         524,288
+      BatchNorm2d-88           [-1, 1024, 8, 8]           2,048
+             ReLU-89           [-1, 1024, 8, 8]               0
+       Bottleneck-90           [-1, 1024, 8, 8]               0
+           Conv2d-91            [-1, 256, 8, 8]         262,144
+      BatchNorm2d-92            [-1, 256, 8, 8]             512
+             ReLU-93            [-1, 256, 8, 8]               0
+           Conv2d-94            [-1, 256, 8, 8]         589,824
+      BatchNorm2d-95            [-1, 256, 8, 8]             512
+             ReLU-96            [-1, 256, 8, 8]               0
+           Conv2d-97           [-1, 1024, 8, 8]         262,144
+      BatchNorm2d-98           [-1, 1024, 8, 8]           2,048
+             ReLU-99           [-1, 1024, 8, 8]               0
+      Bottleneck-100           [-1, 1024, 8, 8]               0
+          Conv2d-101            [-1, 256, 8, 8]         262,144
+     BatchNorm2d-102            [-1, 256, 8, 8]             512
+            ReLU-103            [-1, 256, 8, 8]               0
+          Conv2d-104            [-1, 256, 8, 8]         589,824
+     BatchNorm2d-105            [-1, 256, 8, 8]             512
+            ReLU-106            [-1, 256, 8, 8]               0
+          Conv2d-107           [-1, 1024, 8, 8]         262,144
+     BatchNorm2d-108           [-1, 1024, 8, 8]           2,048
+            ReLU-109           [-1, 1024, 8, 8]               0
+      Bottleneck-110           [-1, 1024, 8, 8]               0
+          Conv2d-111            [-1, 256, 8, 8]         262,144
+     BatchNorm2d-112            [-1, 256, 8, 8]             512
+            ReLU-113            [-1, 256, 8, 8]               0
+          Conv2d-114            [-1, 256, 8, 8]         589,824
+     BatchNorm2d-115            [-1, 256, 8, 8]             512
+            ReLU-116            [-1, 256, 8, 8]               0
+          Conv2d-117           [-1, 1024, 8, 8]         262,144
+     BatchNorm2d-118           [-1, 1024, 8, 8]           2,048
+            ReLU-119           [-1, 1024, 8, 8]               0
+      Bottleneck-120           [-1, 1024, 8, 8]               0
+          Conv2d-121            [-1, 256, 8, 8]         262,144
+     BatchNorm2d-122            [-1, 256, 8, 8]             512
+            ReLU-123            [-1, 256, 8, 8]               0
+          Conv2d-124            [-1, 256, 8, 8]         589,824
+     BatchNorm2d-125            [-1, 256, 8, 8]             512
+            ReLU-126            [-1, 256, 8, 8]               0
+          Conv2d-127           [-1, 1024, 8, 8]         262,144
+     BatchNorm2d-128           [-1, 1024, 8, 8]           2,048
+            ReLU-129           [-1, 1024, 8, 8]               0
+      Bottleneck-130           [-1, 1024, 8, 8]               0
+          Conv2d-131            [-1, 256, 8, 8]         262,144
+     BatchNorm2d-132            [-1, 256, 8, 8]             512
+            ReLU-133            [-1, 256, 8, 8]               0
+          Conv2d-134            [-1, 256, 8, 8]         589,824
+     BatchNorm2d-135            [-1, 256, 8, 8]             512
+            ReLU-136            [-1, 256, 8, 8]               0
+          Conv2d-137           [-1, 1024, 8, 8]         262,144
+     BatchNorm2d-138           [-1, 1024, 8, 8]           2,048
+            ReLU-139           [-1, 1024, 8, 8]               0
+      Bottleneck-140           [-1, 1024, 8, 8]               0
+          Conv2d-141            [-1, 512, 8, 8]         524,288
+     BatchNorm2d-142            [-1, 512, 8, 8]           1,024
+            ReLU-143            [-1, 512, 8, 8]               0
+          Conv2d-144            [-1, 512, 4, 4]       2,359,296
+     BatchNorm2d-145            [-1, 512, 4, 4]           1,024
+            ReLU-146            [-1, 512, 4, 4]               0
+          Conv2d-147           [-1, 2048, 4, 4]       1,048,576
+     BatchNorm2d-148           [-1, 2048, 4, 4]           4,096
+          Conv2d-149           [-1, 2048, 4, 4]       2,097,152
+     BatchNorm2d-150           [-1, 2048, 4, 4]           4,096
+            ReLU-151           [-1, 2048, 4, 4]               0
+      Bottleneck-152           [-1, 2048, 4, 4]               0
+          Conv2d-153            [-1, 512, 4, 4]       1,048,576
+     BatchNorm2d-154            [-1, 512, 4, 4]           1,024
+            ReLU-155            [-1, 512, 4, 4]               0
+          Conv2d-156            [-1, 512, 4, 4]       2,359,296
+     BatchNorm2d-157            [-1, 512, 4, 4]           1,024
+            ReLU-158            [-1, 512, 4, 4]               0
+          Conv2d-159           [-1, 2048, 4, 4]       1,048,576
+     BatchNorm2d-160           [-1, 2048, 4, 4]           4,096
+            ReLU-161           [-1, 2048, 4, 4]               0
+      Bottleneck-162           [-1, 2048, 4, 4]               0
+          Conv2d-163            [-1, 512, 4, 4]       1,048,576
+     BatchNorm2d-164            [-1, 512, 4, 4]           1,024
+            ReLU-165            [-1, 512, 4, 4]               0
+          Conv2d-166            [-1, 512, 4, 4]       2,359,296
+     BatchNorm2d-167            [-1, 512, 4, 4]           1,024
+            ReLU-168            [-1, 512, 4, 4]               0
+          Conv2d-169           [-1, 2048, 4, 4]       1,048,576
+     BatchNorm2d-170           [-1, 2048, 4, 4]           4,096
+            ReLU-171           [-1, 2048, 4, 4]               0
+      Bottleneck-172           [-1, 2048, 4, 4]               0
+AdaptiveAvgPool2d-173           [-1, 2048, 1, 1]               0
+          Linear-174                 [-1, 1000]       2,049,000
+================================================================
+Total params: 25,557,032
+Trainable params: 25,557,032
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.19
+Forward/backward pass size (MB): 93.59
+Params size (MB): 97.49
+Estimated Total Size (MB): 191.27
+----------------------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<p>191 mb 정도의 가벼운 모델 구조를 확인할 수 있습니다.</p>
+<p>다음은 모델 학습을 위한 함수를 정의하겠습니다. 가장 간단한 형태의 train 컨테이너를 구성하였습니다.</p>
+<p>필요한 패키지를 임포트합니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">optim</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>전이학습을 위해 필요한 파라미터를 정의합니다.
+<code class="docutils literal notranslate"><span class="pre">lr</span></code> 은 learning rate 로 0.0001 로 설정하였습니다. 많은 epoch 의 학습을 진행할 때에는 스케쥴러를 사용하면 용이하나, 이번 노트북에서는 가장 간단한 형태의 train 컨테이너를 구성하여 다루지 않았습니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">optimizer</span></code> 은 Adam 으로, <code class="docutils literal notranslate"><span class="pre">loss</span> <span class="pre">function</span></code> 은 cross entropy 로 정의합니다. loss function 은 학습 목적에 따라 다양하게 구성할 수 있으므로 참고바랍니다.</p>
+<p>학습 횟수인 <code class="docutils literal notranslate"><span class="pre">num_epochs</span></code> 은 5로 설정하였습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lr</span> <span class="o">=</span> <span class="mf">0.0001</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">)</span>
+<span class="n">loss_function</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>이때 설정한 파라미터들을 (수정 예정)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;num_epochs&#39;</span><span class="p">:</span><span class="n">num_epochs</span><span class="p">,</span>
+    <span class="s1">&#39;optimizer&#39;</span><span class="p">:</span><span class="n">optimizer</span><span class="p">,</span>
+    <span class="s1">&#39;loss_function&#39;</span><span class="p">:</span><span class="n">loss_function</span><span class="p">,</span>
+    <span class="s1">&#39;train_dataloader&#39;</span><span class="p">:</span><span class="n">train_dataloader</span><span class="p">,</span>
+    <span class="s1">&#39;test_dataloader&#39;</span><span class="p">:</span> <span class="n">test_dataloader</span><span class="p">,</span>
+    <span class="s1">&#39;device&#39;</span><span class="p">:</span><span class="n">device</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span><span class="n">ㄴ</span>
+    <span class="n">loss_function</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;loss_function&quot;</span><span class="p">]</span>
+    <span class="n">train_dataloader</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;train_dataloader&quot;</span><span class="p">]</span>
+    <span class="n">test_dataloader</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;test_dataloader&quot;</span><span class="p">]</span>
+    <span class="n">device</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device&quot;</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_epochs</span><span class="p">):</span>
+      <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_dataloader</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="c1"># train dataloader 로 불러온 데이터에서 이미지와 라벨을 분리</span>
+        <span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+        <span class="c1"># 이전 batch에서 계산된 가중치를 초기화</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span> 
+
+        <span class="c1"># forward + back propagation 연산</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="n">train_loss</span> <span class="o">=</span> <span class="n">loss_function</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+        <span class="n">train_loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+      <span class="c1"># test accuracy 계산</span>
+      <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+      <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+      <span class="n">accuracy</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">test_dataloader</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+        <span class="c1"># 결과값 연산</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+
+        <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">test_loss</span> <span class="o">=</span> <span class="n">loss_function</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">accuracy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">correct</span><span class="o">/</span><span class="n">total</span><span class="p">)</span>
+
+      <span class="c1"># 학습 결과 출력</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Epoch: </span><span class="si">%d</span><span class="s1">/</span><span class="si">%d</span><span class="s1">, Train loss: </span><span class="si">%.6f</span><span class="s1">, Test loss: </span><span class="si">%.6f</span><span class="s1">, Accuracy: </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_epochs</span><span class="p">,</span> <span class="n">train_loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">test_loss</span><span class="p">,</span> <span class="mi">100</span><span class="o">*</span><span class="n">correct</span><span class="o">/</span><span class="n">total</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 0/5, Train loss: 0.061112, Test loss: 0.425641, Accuracy: 90.45
+Epoch: 1/5, Train loss: 0.050574, Test loss: 0.275092, Accuracy: 91.41
+Epoch: 2/5, Train loss: 0.042732, Test loss: 0.229009, Accuracy: 91.83
+Epoch: 3/5, Train loss: 1.185855, Test loss: 0.299690, Accuracy: 90.94
+Epoch: 4/5, Train loss: 0.879423, Test loss: 0.334140, Accuracy: 90.74
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="ch04.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">활용부</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By PseudoLab<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

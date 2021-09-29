@@ -22,7 +22,7 @@
       
 
     
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -43,7 +43,65 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
@@ -53,7 +111,8 @@
     <link rel="shortcut icon" href="../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="적용부" href="03.html" />
+    <link rel="next" title="PyTorch 로 Transfer-Learning 하기" href="ch04-1.html" />
+    <link rel="prev" title="PyTorch 로 ResNet 구현하기" href="ch03-1.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -72,6 +131,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/PseudoLab_logo.png" class="logo" alt="logo">
       
       
@@ -81,7 +144,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -90,102 +153,84 @@
   </a>
  </li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  01 기초부
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="01.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch01.html">
    기초부
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch01-1.html">
+     Tensor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch01-2.html">
+     Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch01-3.html">
+     Model
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ch1/01%20Tensor.html">
-   01 Tensor
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ch1/Tensor%20Allocation.html">
-   └─ Tensor Allocation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ch1/Tensor%20Operation.html">
-   └─ Tensor Operation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ch2/02%20Data.html">
-   02 Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ch2/Data%20set.html">
-   └─ Data set
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ch2/Data%20load.html">
-   └─ Data load
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ch2/Data%20Argument.html">
-   └─ Data Argument
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ch3/03%20Model.html">
-   03 Model
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ch3/Model%20Layer.html">
-   └─ Model Layer
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ch3/Model%20Parameters.html">
-   └─ Model Parameters
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  02 이론부
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="02.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch02.html">
    이론부
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch02-1.html">
+     ResNet 시작하기
+    </a>
+   </li>
+  </ul>
  </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  03 적용부
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="03.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ch03.html">
    적용부
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch03-1.html">
+     PyTorch 로 ResNet 구현하기
+    </a>
+   </li>
+  </ul>
  </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  04 활용부
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
+ <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
    활용부
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ch04-1.html">
+     PyTorch 로 Transfer-Learning 하기
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -228,7 +273,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/04.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/docs/ch04.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -248,7 +293,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/Pseudo-Lab/pytorch-guide/issues/new?title=Issue%20on%20page%20%2Fdocs/04.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/Pseudo-Lab/pytorch-guide/issues/new?title=Issue%20on%20page%20%2Fdocs/ch04.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -269,7 +314,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/Pseudo-Lab/pytorch-guide/master?urlpath=tree/book/docs/04.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Pseudo-Lab/pytorch-guide/master?urlpath=tree/book/docs/ch04.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -289,19 +334,14 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   활용부
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#page-list">
    Page List
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reference">
    Reference
   </a>
@@ -322,10 +362,9 @@
 <ul class="simple">
 <li><p>본 자료는 가짜연구소 3기 PyTorch 가이드 활동으로 작성되었습니다.</p></li>
 </ul>
-</div>
 <hr class="docutils" />
 <div class="section" id="page-list">
-<h1>Page List<a class="headerlink" href="#page-list" title="Permalink to this headline">¶</a></h1>
+<h2>Page List<a class="headerlink" href="#page-list" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><em>이하 내용은 예시 입니다.</em></p></li>
 <li><p>활용부 에서는 PyTorch 로 구현된 네트워크 코드에 대한 설명과 PyTorch 기초부에서 다루었던 내용이 어떻게 적용되는지에 대해 설명합니다.</p></li>
@@ -361,11 +400,14 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="reference">
-<h1>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h1>
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>추가 예정.</p></li>
 </ul>
+</div>
 <hr class="docutils" />
+<div class="toctree-wrapper compound">
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -391,15 +433,36 @@
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="03.html" title="previous page">적용부</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="ch03-1.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">PyTorch 로 ResNet 구현하기</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="ch04-1.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">PyTorch 로 Transfer-Learning 하기</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
